@@ -15,7 +15,7 @@ output "containers" {
     {
       name  = local.container_name
       port  = local.container_port
-      image = local.image_url
+      image = var.container_image
 
     }
   ]
