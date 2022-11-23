@@ -58,7 +58,13 @@ variable "ecs_launch_type" {
   }
 }
 
-variable "environment" {}
+variable "environment" {
+  type = list(object({
+    name  = string
+    value = any
+  }))
+  default = []
+}
 
 variable "cpu" {
   default = 1024
