@@ -1,9 +1,9 @@
 ## ALB
 module "s3_bucket" {
-  source = "terraform-aws-modules/s3-bucket/aws"
-
-  bucket = local.alb_logs_bucket
-  acl    = "log-delivery-write"
+  source        = "terraform-aws-modules/s3-bucket/aws"
+  create_bucket = var.expose ? true : false
+  bucket        = local.alb_logs_bucket
+  acl           = "log-delivery-write"
 
   attach_elb_log_delivery_policy        = true
   attach_lb_log_delivery_policy         = true
