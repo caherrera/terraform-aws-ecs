@@ -60,7 +60,7 @@ resource "aws_route53_record" "backend" {
   name           = var.host
   type           = "CNAME"
   zone_id        = var.zone_id
-  set_identifier = terraform.workspace
+  set_identifier = coalesce(var.record_set_identifier, terraform.workspace)
   ttl            = 360
   records        = [aws_lb.main[0].dns_name]
 

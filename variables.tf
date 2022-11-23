@@ -87,3 +87,8 @@ variable "service_desired" {
 variable "container_image" {
   default = "nginx:alpine"
 }
+
+variable "record_set_identifier" {
+  type    = string
+  default = null
+}
