@@ -1,4 +1,5 @@
 # Terraform AWS ECS Module
+
 This module will create and deploy a ECS Cluster
 
 ## Requirements
@@ -41,24 +42,24 @@ No requirements.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_alb_prefix"></a> [alb\_prefix](#input\_alb\_prefix) | n/a | `any` | n/a | yes |
+| <a name="input_alb_prefix"></a> [alb\_prefix](#input\_alb\_prefix) | n/a | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region to create things in. | `string` | `"us-east-1"` | no |
-| <a name="input_container_name"></a> [container\_name](#input\_container\_name) | n/a | `string` | `"safe-back"` | no |
+| <a name="input_container_name"></a> [container\_name](#input\_container\_name) | n/a | `string` | `"app"` | no |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | n/a | `number` | `8080` | no |
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | n/a | `number` | `1024` | no |
-| <a name="input_ecs_client_prefix"></a> [ecs\_client\_prefix](#input\_ecs\_client\_prefix) | n/a | `any` | n/a | yes |
+| <a name="input_ecs_client_prefix"></a> [ecs\_client\_prefix](#input\_ecs\_client\_prefix) | n/a | `string` | n/a | yes |
 | <a name="input_ecs_launch_type"></a> [ecs\_launch\_type](#input\_ecs\_launch\_type) | The launch type of the ECS Service | `string` | `"FARGATE"` | no |
-| <a name="input_ecs_log_group_name"></a> [ecs\_log\_group\_name](#input\_ecs\_log\_group\_name) | n/a | `any` | n/a | yes |
+| <a name="input_ecs_log_group_name"></a> [ecs\_log\_group\_name](#input\_ecs\_log\_group\_name) | n/a | `string` | n/a | yes |
 | <a name="input_ecs_role_arn"></a> [ecs\_role\_arn](#input\_ecs\_role\_arn) | In case you want to run the ECS Service with a different role than the default one | `string` | `null` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | n/a | `any` | n/a | yes |
 | <a name="input_expose"></a> [expose](#input\_expose) | n/a | `bool` | `true` | no |
-| <a name="input_host"></a> [host](#input\_host) | n/a | `any` | n/a | yes |
+| <a name="input_host"></a> [host](#input\_host) | n/a | `string` | n/a | yes |
 | <a name="input_memory"></a> [memory](#input\_memory) | n/a | `number` | `2048` | no |
-| <a name="input_role_prefix"></a> [role\_prefix](#input\_role\_prefix) | n/a | `any` | n/a | yes |
+| <a name="input_role_prefix"></a> [role\_prefix](#input\_role\_prefix) | n/a | `string` | n/a | yes |
 | <a name="input_service_desired"></a> [service\_desired](#input\_service\_desired) | Desired numbers of instances in the ecs service | `number` | `1` | no |
-| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | n/a | `any` | n/a | yes |
-| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | n/a | `any` | n/a | yes |
-| <a name="input_zone_id"></a> [zone\_id](#input\_zone\_id) | n/a | `any` | n/a | yes |
+| <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | n/a | `list(string)` | n/a | yes |
+| <a name="input_vpc_id"></a> [vpc\_id](#input\_vpc\_id) | n/a | `string` | n/a | yes |
+| <a name="input_zone_id"></a> [zone\_id](#input\_zone\_id) | n/a | `string` | n/a | yes |
 
 ## Outputs
 

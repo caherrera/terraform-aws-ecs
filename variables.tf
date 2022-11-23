@@ -2,16 +2,38 @@ variable "expose" {
   type    = bool
   default = true
 }
-variable "vpc_id" {}
-variable "subnet_ids" {}
-variable "role_prefix" {}
-variable "alb_prefix" {}
-variable "zone_id" {}
-variable "host" {}
-variable "container_name" { default = "safe-back" }
-variable "container_port" { default = 8080 }
-variable "ecs_client_prefix" {}
-variable "ecs_log_group_name" {}
+variable "vpc_id" {
+  type = string
+}
+variable "subnet_ids" {
+  type = list(string)
+}
+variable "role_prefix" {
+  type = string
+}
+variable "alb_prefix" {
+  type = string
+}
+variable "zone_id" {
+  type = string
+}
+variable "host" {
+  type = string
+}
+variable "container_name" {
+  type    = string
+  default = "app"
+}
+variable "container_port" {
+  type    = number
+  default = 8080
+}
+variable "ecs_client_prefix" {
+  type = string
+}
+variable "ecs_log_group_name" {
+  type = string
+}
 variable "ecs_role_arn" {
   type        = string
   description = "In case you want to run the ECS Service with a different role than the default one"
@@ -32,6 +54,7 @@ variable "ecs_launch_type" {
 }
 
 variable "environment" {}
+
 variable "cpu" {
   default = 1024
 }
