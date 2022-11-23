@@ -10,10 +10,8 @@ locals {
   ecs_task_role_name        = "${local.role_prefix}-role"
   ecs_task_policy_name      = "${local.role_prefix}-policy"
   ecs_task_exec_policy_name = "${local.role_prefix}-exec-policy"
-
-  container_name  = var.container_name
-  container_port  = var.container_port
-  image_url       = join(":", [data.aws_ecr_repository.safe_client_back.repository_url, terraform.workspace])
-  alb_prefix      = coalesce(var.alb_prefix, "${local.ecs_client_prefix}-alb")
-  alb_logs_bucket = local.alb_prefix
+  container_name            = var.container_name
+  container_port            = var.container_port
+  alb_prefix                = coalesce(var.alb_prefix, "${local.ecs_client_prefix}-alb")
+  alb_logs_bucket           = local.alb_prefix
 }

@@ -36,7 +36,6 @@ No requirements.
 | [aws_route53_record.backend](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route53_record) | resource |
 | [aws_security_group.app](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
 | [aws_security_group.service_security_group](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/security_group) | resource |
-| [aws_ecr_repository.safe_client_back](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ecr_repository) | data source |
 
 ## Inputs
 
@@ -44,6 +43,7 @@ No requirements.
 |------|-------------|------|---------|:--------:|
 | <a name="input_alb_prefix"></a> [alb\_prefix](#input\_alb\_prefix) | n/a | `string` | n/a | yes |
 | <a name="input_aws_region"></a> [aws\_region](#input\_aws\_region) | The AWS region to create things in. | `string` | `"us-east-1"` | no |
+| <a name="input_container_image"></a> [container\_image](#input\_container\_image) | n/a | `string` | `"nginx:alpine"` | no |
 | <a name="input_container_name"></a> [container\_name](#input\_container\_name) | n/a | `string` | `"app"` | no |
 | <a name="input_container_port"></a> [container\_port](#input\_container\_port) | n/a | `number` | `8080` | no |
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | n/a | `number` | `1024` | no |

@@ -72,3 +72,7 @@ variable "service_desired" {
   description = "Desired numbers of instances in the ecs service"
   default     = 1
 }
+
+variable "container_image" {
+  default = "nginx:alpine"
+}

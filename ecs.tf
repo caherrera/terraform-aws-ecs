@@ -1,13 +1,5 @@
 ## ECS
 
-#data "aws_ecr_image" "safe_client_back" {
-#  repository_name = "safe-client-backend"
-#  image_tag       = terraform.workspace
-#}
-
-data "aws_ecr_repository" "safe_client_back" {
-  name = "safe-client-backend"
-}
 
 module "ecs" {
   source = "terraform-aws-modules/ecs/aws"
@@ -90,7 +82,7 @@ resource "aws_ecs_task_definition" "backend" {
       cpu          = var.cpu
       memory       = var.memory
       essential    = true
-      image        = local.image_url
+      image        = var.container_image
       name         = local.container_name
       portMappings = [
         {
