@@ -8,7 +8,7 @@ module "ecs" {
 
   cluster_configuration = {
     execute_command_configuration = {
-      logging           = "OVERRIDE"
+      logging = "OVERRIDE"
       log_configuration = {
         cloud_watch_log_group_name = aws_cloudwatch_log_group.app.name
       }
@@ -79,21 +79,21 @@ resource "aws_ecs_task_definition" "backend" {
 
   container_definitions = jsonencode([
     {
-      cpu          = var.cpu
-      memory       = var.memory
-      essential    = true
-      image        = var.container_image
-      name         = local.container_name
+      cpu       = var.cpu
+      memory    = var.memory
+      essential = true
+      image     = var.container_image
+      name      = local.container_name
       portMappings = [
         {
           containerPort = local.container_port
           hostPort      = local.container_port
         }
       ],
-      environment      = var.environment,
+      environment = var.environment,
       logConfiguration = {
         logDriver = "awslogs",
-        options   = {
+        options = {
           awslogs-group         = aws_cloudwatch_log_group.app.name
           awslogs-region        = var.aws_region
           awslogs-stream-prefix = aws_cloudwatch_log_stream.app.name
@@ -101,7 +101,7 @@ resource "aws_ecs_task_definition" "backend" {
         }
       }
     }
-  ]
+    ]
   )
 
 }

@@ -9,16 +9,19 @@ variable "subnet_ids" {
   type = list(string)
 }
 variable "role_prefix" {
-  type = string
+  type    = string
+  default = null
 }
 variable "alb_prefix" {
-  type = string
+  type    = string
+  default = null
 }
 variable "zone_id" {
   type = string
 }
 variable "host" {
-  type = string
+  type    = string
+  default = "api"
 }
 variable "container_name" {
   type    = string
@@ -26,13 +29,15 @@ variable "container_name" {
 }
 variable "container_port" {
   type    = number
-  default = 8080
+  default = 8000
 }
 variable "ecs_client_prefix" {
-  type = string
+  type    = string
+  default = null
 }
 variable "ecs_log_group_name" {
-  type = string
+  type    = string
+  default = null
 }
 variable "ecs_role_arn" {
   type        = string

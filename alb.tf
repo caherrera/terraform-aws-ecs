@@ -56,7 +56,7 @@ resource "aws_alb_target_group" "target_group" {
 
 
 resource "aws_route53_record" "backend" {
-  count          = var.expose? 1 : 0
+  count          = var.expose ? 1 : 0
   name           = var.host
   type           = "CNAME"
   zone_id        = var.zone_id
