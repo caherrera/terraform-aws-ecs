@@ -63,7 +63,7 @@ variable "environment" {
     name  = string
     value = any
   }))
-  default = []
+  default = null
 }
 
 variable "cpu" {
