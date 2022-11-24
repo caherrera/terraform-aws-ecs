@@ -31,6 +31,22 @@ variable "container_port" {
   type    = number
   default = 8000
 }
+
+variable "ecs_host_port" {
+  type    = number
+  default = null
+}
+
+variable "alb_port" {
+  type    = number
+  default = null
+}
+
+variable "alb_logs" {
+  type    = bool
+  default = false
+}
+
 variable "ecs_client_prefix" {
   type    = string
   default = null

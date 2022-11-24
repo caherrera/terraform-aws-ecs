@@ -87,7 +87,7 @@ resource "aws_ecs_task_definition" "backend" {
       portMappings = [
         {
           containerPort = local.container_port
-          hostPort      = local.container_port
+          hostPort      = local.ecs_host_port
         }
       ],
       environment = var.environment,

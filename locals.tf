@@ -12,6 +12,8 @@ locals {
   ecs_task_exec_policy_name = "${local.role_prefix}-exec-policy"
   container_name            = var.container_name
   container_port            = var.container_port
+  ecs_host_port             = coalesce(var.ecs_host_port, var.container_port)
+  alb_port                  = coalesce(var.alb_port, local.ecs_host_port)
   alb_prefix                = coalesce(var.alb_prefix, "${local.ecs_client_prefix}-alb")
   alb_logs_bucket           = local.alb_prefix
 }

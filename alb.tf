@@ -1,7 +1,7 @@
 ## ALB
 module "s3_bucket" {
   source        = "terraform-aws-modules/s3-bucket/aws"
-  create_bucket = var.expose ? true : false
+  create_bucket = var.expose && var.alb_logs ? true : false
   bucket        = local.alb_logs_bucket
   acl           = "log-delivery-write"
 
@@ -28,7 +28,7 @@ resource "aws_lb" "main" {
 
   access_logs {
     prefix  = "${local.alb_prefix}-access-logs"
-    enabled = true
+    enabled = var.alb_logs
     bucket  = module.s3_bucket.s3_bucket_id
   }
 }
@@ -36,7 +36,7 @@ resource "aws_lb" "main" {
 resource "aws_alb_listener" "endpoint" {
   count             = var.expose ? 1 : 0
   load_balancer_arn = aws_lb.main[0].id
-  port              = var.container_port
+  port              = local.alb_port
   protocol          = "HTTP"
 
   default_action {
@@ -48,10 +48,11 @@ resource "aws_alb_listener" "endpoint" {
 resource "aws_alb_target_group" "target_group" {
   count       = var.expose ? 1 : 0
   name        = "${local.alb_prefix}-tg"
-  port        = var.container_port
+  port        = local.ecs_host_port
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
   target_type = "ip"
+
 }
 
 
