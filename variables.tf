@@ -47,7 +47,7 @@ variable "alb_logs" {
   default = false
 }
 
-variable "ecs_client_prefix" {
+variable "ecs_prefix" {
   type    = string
   default = null
 }

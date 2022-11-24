@@ -4,7 +4,7 @@
 module "ecs" {
   source = "terraform-aws-modules/ecs/aws"
 
-  cluster_name = local.ecs_client_cluster_name
+  cluster_name = local.ecs_cluster_name
 
   cluster_configuration = {
     execute_command_configuration = {
@@ -32,7 +32,7 @@ module "ecs" {
 
 resource "aws_ecs_service" "main_service" {
   count           = var.expose ? 1 : 0
-  name            = local.ecs_client_service_name
+  name            = local.ecs_service_name
   cluster         = module.ecs.cluster_id
   task_definition = aws_ecs_task_definition.backend.arn
   desired_count   = var.service_desired
@@ -54,7 +54,7 @@ resource "aws_ecs_service" "main_service" {
 
 resource "aws_ecs_service" "backend_service" {
   count           = var.expose ? 0 : 1
-  name            = local.ecs_client_service_name
+  name            = local.ecs_service_name
   cluster         = module.ecs.cluster_id
   task_definition = aws_ecs_task_definition.backend.arn
   desired_count   = var.service_desired
@@ -68,7 +68,7 @@ resource "aws_ecs_service" "backend_service" {
 }
 
 resource "aws_ecs_task_definition" "backend" {
-  family                   = local.ecs_client_task_name
+  family                   = local.ecs_task_name
   network_mode             = "awsvpc"
   requires_compatibilities = [var.ecs_launch_type]
   execution_role_arn       = local.ecs_role_arn
