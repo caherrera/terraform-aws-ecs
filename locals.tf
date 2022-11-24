@@ -1,5 +1,5 @@
 locals {
-  ecs_prefix                = coalesce(var.ecs_client_prefix, var.host)
+  ecs_prefix                = coalesce(var.ecs_prefix, var.host)
   ecs_cluster_name          = "${local.ecs_prefix}-cluster"
   ecs_service_name          = "${local.ecs_prefix}-service"
   ecs_task_name             = "${local.ecs_prefix}-backend"
