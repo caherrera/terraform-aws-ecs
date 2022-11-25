@@ -3,7 +3,8 @@ locals {
   ecs_cluster_name          = "${local.ecs_prefix}-cluster"
   ecs_service_name          = "${local.ecs_prefix}-service"
   ecs_task_name             = "${local.ecs_prefix}-backend"
-  sg_name                   = "${local.ecs_prefix}-lb-sg"
+  sg_name_lb                = "${local.ecs_prefix}-lb-sg"
+  sg_name_svc               = "${local.ecs_prefix}-svc-sg"
   ecs_log_group_name        = coalesce(var.ecs_log_group_name, "${local.ecs_prefix}/${local.container_name}")
   ecs_role_arn              = var.ecs_role_arn == null ? aws_iam_role.ecs_task_role[0].arn : var.ecs_role_arn
   role_prefix               = coalesce(var.role_prefix, join("-", [local.ecs_prefix, "ecs"]))

@@ -1,3 +1,9 @@
+variable "create" {
+  description = "Determines whether resources will be created (affects all resources)"
+  type        = bool
+  default     = true
+}
+
 variable "expose" {
   type    = bool
   default = true
@@ -107,4 +113,10 @@ variable "container_image" {
 variable "record_set_identifier" {
   type    = string
   default = null
+}
+
+variable "fargate_capacity_providers" {
+  description = "Map of Fargate capacity provider definitions to use for the cluster"
+  type        = any
+  default     = {}
 }
