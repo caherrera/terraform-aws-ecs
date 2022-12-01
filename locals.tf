@@ -17,4 +17,15 @@ locals {
   alb_port                  = coalesce(var.alb_port, local.ecs_host_port)
   alb_prefix                = coalesce(var.alb_prefix, "${local.ecs_prefix}-alb")
   alb_logs_bucket           = local.alb_prefix
+  listener_http             = {
+    protocol        = "HTTP"
+    ssl_policy      = null
+    certificate_arn = null
+  }
+  listener_https = {
+    protocol        = "HTTPS"
+    ssl_policy      = "ELBSecurityPolicy-2016-08"
+    certificate_arn = var.certificate_arn == null ? data.aws_acm_certificate.issued[0].arn : var.certificate_arn
+  }
+
 }

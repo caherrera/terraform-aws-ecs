@@ -37,7 +37,9 @@ resource "aws_alb_listener" "endpoint" {
   count             = var.expose ? 1 : 0
   load_balancer_arn = aws_lb.main[0].id
   port              = local.alb_port
-  protocol          = "HTTP"
+  protocol          = var.ssl ? local.listener_https.protocol : local.listener_http.protocol
+  ssl_policy        = var.ssl ? local.listener_https.ssl_policy : local.listener_http.ssl_policy
+  certificate_arn   = var.ssl ? local.listener_https.certificate_arn : local.listener_http.certificate_arn
 
   default_action {
     target_group_arn = aws_alb_target_group.target_group[count.index].id
@@ -53,6 +55,10 @@ resource "aws_alb_target_group" "target_group" {
   vpc_id      = var.vpc_id
   target_type = "ip"
 
+}
+
+data "aws_route53_zone" "zone" {
+  zone_id = var.zone_id
 }
 
 

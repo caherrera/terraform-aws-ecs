@@ -120,3 +120,15 @@ variable "fargate_capacity_providers" {
   type        = any
   default     = {}
 }
+
+variable "ssl" {
+  description = "Enable a Load Balancer Listener Certificate"
+  type        = bool
+  default     = false
+}
+
+variable "certificate_arn" {
+  description = "The ARN of the certificate to attach to the listener."
+  default     = null
+  type        = string
+}
